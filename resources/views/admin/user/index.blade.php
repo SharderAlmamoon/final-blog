@@ -734,64 +734,49 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <!-- left column -->
-                    <div class="offset-3  col-md-6">
-                        <!-- general form elements -->
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Add New User</h3>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">ALL USER VIEW</h3>
+
+                            <div class="card-tools">
+                                <ul class="pagination pagination-sm float-right">
+                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                </ul>
                             </div>
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                            <form role="form" action="{{route('user.store')}}" method="post">
-                                @csrf
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="name">NAME :</label>
-                                        <input type="text" value="{{old('name')}}" name="name" class="form-control" id="name" placeholder="Enter User name">
-                                        @error('name')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address :</label>
-                                        <input type="email" value="{{old('email')}}" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                        @error('email')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="phone">Phone :</label>
-                                        <input type="text" value="{{old('phone')}}" name="phone" class="form-control" id="phone" placeholder="Enter User phone">
-                                        @error('phone')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                        @error('password')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                <div class="form-group">
-                                        <label for="exampleInputPassword1">Confirm Password :</label>
-                                        <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
-                                    </div>
-                                </div>
-                                <!-- /.card-body -->
-
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
                         </div>
-                        <!-- /.card -->
-
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th style="width: 10px">ID</th>
+                                    <th>NAME</th>
+                                    <th>EMAIL</th>
+                                    <th>PHONE</th>
+                                    <th>OPTION</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($users as $user)
+                                <tr>
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td> {{$user->email}}</td>
+                                    <td> {{$user->phone}}</td>
+                                    <td><span class="badge bg-danger">55%</span></td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <!--/.col (left) -->
+                    <!-- /.card -->
                 </div>
             </div><!-- /.container-fluid -->
         </section>
